@@ -1,0 +1,23 @@
+linux配置maven
+
+1.选择下载目录，下载maven 
+wget http://mirror.bit.edu.cn/apache/maven/maven-3/3.6.1/binaries/apache-maven-3.6.1-bin.zip
+
+2.到下载目录解压压缩包
+unzip apache-maven-3.6.1-bin.zip
+
+3.修改配置文件
+vim /etc/profile
+
+4.profile文件末尾写入
+export MAVEN_HOME=/root/apache-maven-3.6.1|解压maven的路径
+export PATH=$MAVEN_HOME/bin:$PATH
+
+
+
+5.更新profile
+source /etc/profile
+
+6.检查maven版本验证配置
+mvn -version
+
