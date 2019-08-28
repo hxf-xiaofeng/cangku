@@ -1,0 +1,19 @@
+linux下配置tomcat
+
+1.下载tomcat安装包(打开tomcat.apache.org,复制下载链接)
+wget http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-9/v9.0.24/bin/apache-tomcat-9.0.24.zip
+
+2.解压安装tomcat并查看
+unzip apache-tomcat-9.0.24.zip      
+ls -l
+
+3.配置Tomcat
+-添加可执行权限 chmod a+x -R *
+-修改默认端口避免冲突 vim conf/server.xml
+
+4.启动验证Tomcat
+-启动tomcat bin/startup.sh
+-验证启动 ps -ef|grep tomcat
+-防火墙添加端口 firewall-cmd --add-port=端口/tcp --permanent
+-重载防火墙 firewall-cmd --reload
+-打开浏览器输入网址：本地ip:端口
