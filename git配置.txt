@@ -1,0 +1,30 @@
+linux下配置GIT
+
+1.使用yum安装git
+yum install git -y
+
+2.检查git是否安装成功
+git version
+
+3.设置git用户名及邮箱
+git config --global user.name "xiaofeng"
+git config --global user.email "379506993@qq.com"
+
+4.生成密钥
+ssh-keygen -t rsa -C "379506993@qq.com"
+按照默认设置按3次enter
+
+5.检查密钥生成情况(能看到id_rsa和id_rsa.pub即成功)
+cd ~/.ssh
+ls
+
+6.打开github网站，登录后点击用户头像，显示设置列表后点击settings.
+进入设置页面，点击SSH and GPG keys,显示SSH keys和GPG keys的视图
+点击New SSH key按钮，显示添加视图后，随意输入title，到linux系统下查看公钥
+vim ~/.ssh/id_rsa.pub 用鼠标全选密钥内容
+回到github网站，鼠标右键粘贴，点击Add SSH key
+
+7.验证github设置的密钥是否成功(显示You've successfully authenticated即成功)
+ssh git@github.com
+
+
