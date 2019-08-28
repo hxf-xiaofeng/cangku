@@ -1,0 +1,25 @@
+linux下配置jenkins
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+yum install jenkins
+
+配置jenkins的端口（默认端口8080，如果不冲突可以不修改，netstat -ntlp查看已经占用的端口）
+vim /etc/sysconfig/jenkins
+
+配置JAVA路径
+vim /etc/rc.d/init.d/jenkins
+/usr/bin/java/jdk1.8.0_212/bin/java
+
+
+开放端口
+firewall-cmd --query-port=8080/tcp 
+firewall-cmd --add-port=8888/tcp --permanent
+firewall-cmd --reload
+
+配置jenkins配置文件（jenkins登录后空白页）
+vim /var/lib/jenkins/config.xml
+替换为： 
+1、任何用户可以做任何事(没有任何限制)
+<authorizationStrategy class="hudson.security.AuthorizationStrategy$Unsecured"/>
+2、登录用户可以做任何事
+<authorizationStrategy class="hudson.security.FullControlOnceLoggedInAuthorizationStrategy"/>
